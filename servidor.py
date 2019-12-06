@@ -12,13 +12,14 @@ try:
 except IndexError:
 	print("no se pudo crear la base de datos")
 	exit(1)
-if len(sys.argv)>= 2:
+if len(sys.argv)>= 3:
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	port= 10000
 	server_name = sys.argv[2]
 	adress = (server_name,port)
 else:
-	adress = ('/tmp/db.tuples.sock.')
+	path = ('/tmp/db.tuples.sock.')
+	adress = path
 	s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
 s.bind(adress)
 s.listen(5)
